@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacts index page</title>
+    <h1>
+        contacts home
+    </h1>
+    <link rel="stylesheet" href="styles/your-stylesheet-name.css">
+</head>
+<body>
+
+    <nav>
+        <ul>
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="projects/index.html" class="active">Projects</a></li>
+            <li><a href="https://github.com/shekark642" target="_blank">GitHub</a></li>
+
+        </ul>
+    </nav>
+
+
+    <h1>Contact Us</h1>
+    <form action="mailto:shekar.km26@gmail.com" method="POST" enctype="text/plain">
+        <!-- Email Field -->
+        <label for="email">Your Email:</label>
+        <input type="email" id="email" name="email" required>
+        <br><br>
+        
+        <!-- Subject Field -->
+        <label for="subject">Subject:</label>
+        <input type="text" id="subject" name="subject" required>
+        <br><br>
+        
+        <!-- Message Field -->
+        <label for="body">Message:</label>
+        <input type="text" id="message" required>
+
+        <br><br>
+        
+        <!-- Submit Button -->
+        <button>Send Message</button>
+    </form>
+
+    
+</body>
+</html>
