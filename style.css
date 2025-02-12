@@ -1,6 +1,124 @@
 body {
-    /* Set line height to 1.5 times the font size
-         and use the OS’s UI font as the website font
-       */
-    font: 100%/1.5 system-ui;
-  }
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  margin: 0 auto;
+  margin-inline: auto; /* Centers the content horizontally */
+  padding: 20px;
+  max-width: 80ch; /* Limit the width of the content */
+  box-sizing: border-box; /* Include padding in the width calculation */
+  padding-top: 60px;
+}
+
+
+
+
+img {
+  max-width: 100%; /* Ensures the image width doesn't exceed its container */
+  height: auto;    /* Maintains the aspect ratio of the image */
+  display: block;  /* Removes extra space below the image */
+}
+
+
+
+
+nav {
+  display: flex;
+  justify-content: space-between; /* Evenly distributes links */
+  align-items: center;
+  position: fixed; /* Fixes it to the top */
+  top: 0; /* Ensures it stays at the very top */
+  left: 0;
+  width: 100%; /* Full width */
+  background: #ddbdbd; /* Dark background */
+  padding: 1em 0; /* Adds padding above and below */
+  z-index: 1000; /* Ensures it stays above other content */
+}
+
+/* Remove default list styles */
+nav ul, nav li {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+/* Style each link */
+nav a {
+  text-decoration: none; /* Remove underline */
+  color: white; /* White text */
+  padding: 0.5em 1em; /* Add spacing */
+  transition: 0.3s; /* Smooth hover effect */
+}
+
+/* Hover Effect */
+nav a:hover {
+  background: #555; /* Darker background on hover */
+  border-radius: 5px;
+}
+
+/* Highlight Current Page */
+nav a.current {
+  font-weight: bold;
+  background: #d12626; /* Orange highlight for active page */
+  border-radius: 5px;
+}
+
+#dark-mode-toggle {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5em;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#dark-mode-toggle:hover {
+  color: #ff9800;
+}
+
+
+
+/* Dark mode styles */
+.dark-mode {
+  background: #121212;
+  color: #ffffff;
+}
+
+/* Dark mode navbar */
+.dark-mode nav {
+  background: #222;
+}
+
+/* Dark mode links */
+.dark-mode nav a {
+  color: #ffffff;
+}
+
+.dark-mode nav a:hover {
+  background: #444;
+}
+
+/* Dark mode toggle button */
+.dark-mode #dark-mode-toggle {
+  color: #ff9800;
+}
+
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Project Card */
+article {
+  background: white;
+  padding: 1.5em;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: 0.3s;
+}
+
+
