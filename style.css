@@ -332,3 +332,106 @@ path {
       justify-content: center;
   }
 }
+
+#chart {
+  width: 60vw;  /* Full screen width */
+  height: 40vh;  /* 80% of screen height */
+  display: flex;
+  justify-content: flex-start; /* Aligns everything to the left */
+  align-items: flex-start; /* Aligns to the top */
+  padding: 20px;
+  background: #fff;
+  overflow: visible;
+}
+
+
+/* Make sure the SVG also takes full space */
+#chart svg {
+  width: 100%;
+  height: 100%;
+  padding-right: 500px;
+}
+
+
+.gridlines line {
+  stroke: #796d6d; /* Light gray color */
+  stroke-width: 1; /* Thin lines */
+  stroke-dasharray: 4 4; /* Dashed lines for subtle effect */
+  opacity: 0.65; /* Reduce opacity to make them less prominent */
+}
+
+/* Hide the gridline axis path */
+.gridlines path {
+  display: none; /* Removes the axis line itself */
+}
+
+
+
+
+
+
+
+
+dl.info {
+  display: grid;
+  grid-template-columns: auto 1fr; /* First column auto-sized, second takes remaining space */
+  gap: 5px 15px; /* Small gap between rows and more space between columns */
+  align-items: center; /* Aligns text vertically */
+  margin: 0; /* Removes default margins */
+  padding: 10px;
+  background: #f8f9fa; /* Light background for better visibility */
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  transition-duration: 500ms;
+  transition-property: opacity, visibility;
+}
+
+dl.info[hidden]:not(:hover, :focus-within) {
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* Styling for <dt> (labels) */
+dl.info dt {
+  font-weight: bold;
+  color: #555; /* Less prominent than <dd> */
+  text-align: right;
+}
+
+/* Styling for <dd> (values) */
+dl.info dd {
+  margin: 0; /* Remove default margin */
+  font-weight: bold;
+  color: #222; /* More prominent */
+}
+
+.tooltip {
+  position: fixed;
+  top: 50%; /* Vertically centered */
+  left: 10em; /* Slightly inwards from the left */
+  transform: translateY(-50%); /* Ensures true vertical centering */
+  padding: 12px 16px; /* Comfortable padding */
+  background: rgba(255, 255, 255, 0.85); /* Semi-transparent white */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Subtle elevation */
+  backdrop-filter: blur(10px); /* Frosted glass effect */
+  font-size: 14px;
+  color: #333; /* Dark text for readability */
+  max-width: 300px;
+  z-index: 4400; /* Ensures it stays on top */
+  transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+
+
+circle {
+  transition: 200ms;
+  transform-origin: center;
+  transform-box: fill-box;
+}
+
+circle:hover {
+  transform: scale(1.5);
+}
+
