@@ -1,22 +1,36 @@
 [
     {
-        "title": "Project One",
+        "title": "Weather Visualization",
         "image": "../images/proj1_106 ss.png",
-        "description": "HTML This is a visualization showing the correlation of sunshine and rain across the four seasons"
+        "description": "This is a visualization showing the correlation of sunshine and rain across the four seasons. I used MatPlotLib to plot data gathered from <a href='https://www.usclimatedata.com/' target='_blank'>this source</a> ",
+        "year": "2025"
+
     },
     {
-        "title": "Project Two",
-        "image": "",
-        "description": "N/A"
+        "title": "Cookin Calories",
+        "image": "../images/cookin calories ss.png",
+        "description": "Performed analysis on a real dataset containing cooking recipes and presented findings on Github Pages. Cleaned data and performed exploratory data analysis, conducted hypothesis testing for univariate and bivariate distributions, and used Scikit-learn pipelines to create a predictive regression model. Github Page is located <a href='https://jasminehong2392.github.io/jasmineshekar-recipes/' target='_blank'>here</a>",
+        "year": "2024"
     },
     {
-        "title": "Project Three",
-        "image": "",
-        "description": "N/A"
+        "title": "Biomechanics of Tennis Serve Motion with Increased Ball Velocity" ,
+        "image": "../images/biomech ss.png",
+        "description": "Optimized the biomechanics of a tennis serve motion to increase ball velocity and proved this by using mathematical models based on Newtonian physics and statistical data from controlled experiments. You can download the reseach paper <a href='../files/Biomech tennis.csv' download>here</a>.",
+        "year": "2020"
     },
+
     {
-        "title": "Project Four",
-        "image": "",
-        "description": "N/A"
+        "title": "Personal Repository" ,
+        "image": "../images/personal repo ss.png",
+        "description": "A personal project I have been working on in my free time since high school, I coded from scratch using HTML, Java Spring Boot, and Maven, and deployed with AWS EC2> you can find it at <a href='http://Shekarkrishnamoorthy.com' target='_blank'>http://Shekarkrishnamoorthy.com</a> ",
+        "year": "2024"
+    },
+
+    {
+        "title": "Personal Repository" ,
+        "image": "../images/personal repo ss.png",
+        "description": "A personal project I have been working on in my free time since high school, I coded from scratch using HTML, Java Spring Boot, and Maven, and deployed with AWS EC2> you can find it at <a href='http://Shekarkrishnamoorthy.com' target='_blank'>http://Shekarkrishnamoorthy.com</a> ",
+        "year": "2024"
     }
+    
 ]

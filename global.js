@@ -6,13 +6,19 @@ function $$(selector, context = document) {
   return Array.from(context.querySelectorAll(selector));
 }
 
+
+
 let pages = [
+
   { url: '', title: 'Home' },
   { url: 'projects/', title: 'Projects' },
   { url: 'contact/', title: 'Contact' },
-  { url: 'resume/', title: 'Resume' },
   { url: 'https://github.com/shekark642', title: 'GitHub' },
+  { url: 'meta/', title: 'Meta' },
+
+
 ];
+
 
 const ARE_WE_HOME = document.documentElement.classList.contains('home');
 
@@ -55,6 +61,25 @@ currentLink?.classList.add("current");
 
 
 
+let darkModeContainer = document.createElement('div');
+darkModeContainer.classList.add('dark-mode-toggle');
+
+// Create dark mode button
+let darkModeButton = document.createElement('button');
+darkModeButton.id = "dark-mode-toggle";
+darkModeButton.textContent = "🌙";
+
+// Append the dark mode button to its container
+darkModeContainer.appendChild(darkModeButton);
+
+// Append the dark mode container to the navbar
+nav.appendChild(darkModeContainer);
+
+
+
+
+
+
 const darkModeToggle = document.getElementById("dark-mode-toggle");
 const body = document.body;
 
@@ -90,11 +115,68 @@ export async function fetchJSON(url) {
             throw new Error(`Failed to fetch projects: ${response.statusText}`);
         }
 
-        // Parse response data
         const data = await response.json();
-        return data;
+        return data; 
 
     } catch (error) {
         console.error('Error fetching or parsing JSON data:', error);
     }
+}
+
+
+
+
+export function renderProjects(projects, containerElement, headingLevel ='h2') {
+  // Clear the existing content of the container element
+  containerElement.innerHTML = '';
+
+  // Loop through each project to create an article element for each
+  for (let project of projects) {
+      // Create a new <article> element to hold the project's details
+      const article = document.createElement('article');
+
+      // Create the heading element dynamically
+      const heading = document.createElement(headingLevel);
+      heading.textContent = project.title;
+
+      // Create a span for the project year
+      const yearSpan = document.createElement('span');
+      yearSpan.textContent = ` (${project.year})`;
+      yearSpan.style.fontWeight = 'bold';
+      yearSpan.style.marginLeft = '8px';
+      yearSpan.style.color = '#555';
+
+
+      // Wrap heading and year together in a div
+      const headingContainer = document.createElement('div');
+      headingContainer.appendChild(heading);
+      headingContainer.appendChild(yearSpan);
+
+      // Create an image element
+      const img = document.createElement('img');
+      img.src = project.image;
+      img.alt = project.title;
+
+      // Create a paragraph for the description
+      const description = document.createElement('p');
+      description.textContent = project.description;
+      description.innerHTML = project.description;
+
+
+      // Append all elements to the article
+      article.appendChild(headingContainer);
+      article.appendChild(img);
+      article.appendChild(description);
+      article.appendChild(yearSpan);
+
+
+      // Append the article to the container element
+      containerElement.appendChild(article);
+  }
+}
+
+
+
+export async function fetchGitHubData(username) {
+  return fetchJSON(`https://api.github.com/users/${username}`);
 }
