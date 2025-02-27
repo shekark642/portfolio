@@ -27,10 +27,10 @@
     },
 
     {
-        "title": "Personal Repository" ,
-        "image": "../images/personal repo ss.png",
-        "description": "A personal project I have been working on in my free time since high school, I coded from scratch using HTML, Java Spring Boot, and Maven, and deployed with AWS EC2> you can find it at <a href='http://Shekarkrishnamoorthy.com' target='_blank'>http://Shekarkrishnamoorthy.com</a> ",
-        "year": "2024"
+        "title": "Bikewatching in Boston" ,
+        "image": "../images/bikewatching project ss.png",
+        "description": "Here is a project I did for a data science class. I used external and internal resources to create an interactive map that gives analysis on the traffic and flow of bikes. It shows information of bike lanes and bike stations for different times in the Boston area. You can find it <a href='https://shekark642.github.io/BostonBikeTraffic/' target='_blank'>here</a>",
+        "year": "2025"
     }
     
 ]
