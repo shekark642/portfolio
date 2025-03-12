@@ -21,10 +21,25 @@
 
 
     <h2>Commits by time of day</h2>
+
+    <div id="filter-container">
+      <label for="commit-slider">Show commits until:</label>
+      <input type="range" min="0" max="100" id="commit-slider">
+      <time id="commit-time"></time>
+  </div>
+
+    
     <div id="chart"></div>
 
 
+    
+
+
     <dl id="commit-tooltip" class="info tooltip" style="padding-top: 15px;">
+
+
+
+      
         <dt>Commit</dt>
         <dd>
           <a href="" id="commit-link" target="_blank"></a>
@@ -32,9 +47,16 @@
       
         <dt>Date</dt>
         <dd id="commit-date"></dd>
+
+
+
       
         <!-- Add: Time, author, lines edited -->
       </dl>
+
+
+
+
 
       <p id="selection-count">No commits selected</p>
 

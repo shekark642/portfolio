@@ -1,18 +1,29 @@
 let data = [];
 let xScale, yScale; 
+let commits = d3.groups(data, (d) => d.commit);
+let commitProgress = 100;
 
+let timeScale = d3.scaleTime([d3.min(commits, d => d.datetime), d3.max(commits, d => d.datetime)], [0, 100]);
+let commitMaxTime = timeScale.invert(commitProgress);
+
+const commitSlider = document.getElementById("commit-slider");
+const commitTime = document.getElementById("commit-time");
 
 
 document.addEventListener('DOMContentLoaded', async () => {
   await loadData();
-  createScatterplot();
+  processCommits();    // Process commits after data is loaded
+  createScatterplot(); // Render scatterplot
+  updateCommitTime();  // Ensure UI updates
 
 }, 
-
-
-
-
 );
+
+
+
+
+
+
 
 async function loadData() {
     data = await d3.csv('loc.csv', (row) => ({
@@ -25,13 +36,11 @@ async function loadData() {
     }));
 
     displayStats();
+    processCommits();
     console.log(commits);
   }
 
 
-
-
-  let commits = d3.groups(data, (d) => d.commit);
 
   function processCommits() {
     commits = d3
@@ -62,6 +71,30 @@ async function loadData() {
         return ret;
       });
   }
+
+
+  function updateCommitTime() {
+    commitProgress = commitSlider.value;
+    let commitMaxTime = timeScale.invert(commitProgress); // Convert slider value to date
+
+
+
+    const selectedTime = d3.select('#selectedTime');
+    selectedTime.textContent = timeScale.invert(commitProgress).toLocaleString();
+
+    // Update the <time> element to display the formatted commit time
+    commitTime.textContent = commitMaxTime.toLocaleString(undefined, {
+      dateStyle: "long",
+      timeStyle: "short"
+  });
+}
+
+// ✅ Attach event listener to slider
+commitSlider.addEventListener("input", updateCommitTime);
+
+
+
+  
 
 
 

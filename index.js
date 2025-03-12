@@ -8,7 +8,7 @@ renderProjects(latestProjects, projectsContainer, 'h2');
 
 
 
-const githubData = await fetchGitHubData('giorgianicolaou');
+const githubData = await fetchGitHubData('shekark642');
 
 
 
@@ -29,8 +29,8 @@ document.body.prepend(profileStatsContainer);
 if (profileStats) {
     profileStats.innerHTML = `
           <dl>
+            <dt>Github Stats - </dt>
             <dt>Public Repos:</dt><dd>${githubData.public_repos}</dd>
-            <dt>Public Gists:</dt><dd>${githubData.public_gists}</dd>
             <dt>Followers:</dt><dd>${githubData.followers}</dd>
             <dt>Following:</dt><dd>${githubData.following}</dd>
             <dt>Created:</dt><dd>${githubData.created_at}</dd>
