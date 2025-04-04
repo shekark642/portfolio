@@ -12,9 +12,9 @@ let pages = [
 
   { url: '', title: 'Home' },
   { url: 'projects/', title: 'Projects' },
-  { url: 'contact/', title: 'Contact' },
-  { url: 'https://github.com/shekark642', title: 'GitHub' },
+  { url: 'news/', title: 'News' },
   { url: 'meta/', title: 'Meta' },
+  { url: 'contact/', title: 'Contact' }
 
 
 ];
@@ -57,6 +57,8 @@ let currentLink = navLinks.find(
 );
 
 currentLink?.classList.add("current");
+
+
 
 
 

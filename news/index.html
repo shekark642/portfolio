@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shekar: Personal Site and Portfolio</title>
+    <h1>
+        Top Headlines
+    </h1>
+    <link rel="stylesheet" href="../style.css">
+    <meta charset="UTF-8">
+    <style>
+
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+      }
+      #controls {
+        margin-bottom: 20px;
+      }
+      /* Category filter buttons */
+      .category-btn {
+        margin-right: 10px;
+        padding: 5px 10px;
+        cursor: pointer;
+        border: 1px solid #007BFF;
+        background-color: white;
+        color: #007BFF;
+        border-radius: 3px;
+      }
+      .category-btn.active {
+        background-color: #007BFF;
+        color: white;
+      }
+      /* Reset filter button */
+      #resetFilter {
+        padding: 5px 10px;
+        cursor: pointer;
+        margin-left: 10px;
+      }
+      /* News item box styling */
+      .article {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 15px;
+        margin-bottom: 15px;
+        box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+      }
+      .article h2 {
+        margin: 0 0 10px;
+      }
+      .article p {
+        margin: 10px 0;
+      }
+      .article a {
+        text-decoration: none;
+        color: #007BFF;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="controls">
+      <div id="categoryFilters">
+        <!-- Category filter buttons -->
+        <button class="category-btn" data-category="">All</button>
+        <button class="category-btn" data-category="business">Business</button>
+        <button class="category-btn" data-category="entertainment">Entertainment</button>
+        <button class="category-btn" data-category="general">General</button>
+        <button class="category-btn" data-category="health">Health</button>
+        <button class="category-btn" data-category="science">Science</button>
+        <button class="category-btn" data-category="sports">Sports</button>
+        <button class="category-btn" data-category="technology">Technology</button>
+        <button id="resetFilter">Reset Filter</button>
+      </div>
+      <div id="sortOptions" style="margin-top:10px;">
+        <label for="sortSelect">Sort by:</label>
+        <select id="sortSelect">
+          <option value="popularity">Popularity (default)</option>
+          <option value="date">Publication Date (Newest)</option>
+        </select>
+      </div>
+    </div>
+  
+    <div id="news">Loading news...</div>
+
+  <script>
+    // Replace with your actual API key
+    const apiKey = '890434a0b66748c9b504cc28df6511ff';
+    let currentCategory = '';
+    let currentSort = 'popularity'; // default sort
+
+    // Function to load news based on filters and sort option
+    function loadNews() {
+      // Use the top-headlines endpoint, filtered for the United States
+      let url = `https://newsapi.org/v2/top-headlines?country=us&apiKey=${apiKey}`;
+      if (currentCategory) {
+        url += `&category=${currentCategory}`;
+      }
+      
+      fetch(url)
+        .then(response => response.json())
+        .then(data => {
+          let articles = data.articles || [];
+          // If sorting by publication date, filter out articles missing a date and then sort them
+          if (currentSort === 'date') {
+            articles = articles.filter(article => article.publishedAt)
+              .sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
+          }
+          displayNews(articles);
+        })
+        .catch(error => {
+          document.getElementById('news').textContent = 'Error fetching news.';
+          console.error('Error fetching news:', error);
+        });
+    }
+
+    // Function to display news articles on the page
+    function displayNews(articles) {
+      const newsContainer = document.getElementById('news');
+      newsContainer.innerHTML = ''; // Clear current articles
+
+      if (articles.length === 0) {
+        newsContainer.textContent = 'No news articles found.';
+        return;
+      }
+
+      articles.forEach(article => {
+        const articleDiv = document.createElement('div');
+        articleDiv.className = 'article';
+
+        // Article title
+        const title = document.createElement('h2');
+        title.textContent = article.title;
+        articleDiv.appendChild(title);
+
+        // Article description
+        if (article.description) {
+          const description = document.createElement('p');
+          description.textContent = article.description;
+          articleDiv.appendChild(description);
+        }
+
+        // Publication date (if available)
+        if (article.publishedAt) {
+          const pubDate = document.createElement('p');
+          pubDate.textContent = `Published At: ${new Date(article.publishedAt).toLocaleString()}`;
+          articleDiv.appendChild(pubDate);
+        }
+
+        // Link to full article
+        const link = document.createElement('a');
+        link.href = article.url;
+        link.textContent = 'Read more';
+        link.target = '_blank';
+        articleDiv.appendChild(link);
+
+        newsContainer.appendChild(articleDiv);
+      });
+    }
+
+    // Set up event listeners for category filter buttons
+    document.querySelectorAll('.category-btn').forEach(button => {
+      button.addEventListener('click', () => {
+        // Remove active class from all buttons
+        document.querySelectorAll('.category-btn').forEach(btn => btn.classList.remove('active'));
+        currentCategory = button.getAttribute('data-category');
+        // Only mark the button as active if a category is specified
+        if (currentCategory !== null && currentCategory !== '') {
+          button.classList.add('active');
+        }
+        loadNews();
+      });
+    });
+
+    // Reset filter functionality
+    document.getElementById('resetFilter').addEventListener('click', () => {
+      currentCategory = '';
+      document.querySelectorAll('.category-btn').forEach(btn => btn.classList.remove('active'));
+      loadNews();
+    });
+
+    // Listen for changes on the sort select dropdown
+    document.getElementById('sortSelect').addEventListener('change', (event) => {
+      currentSort = event.target.value;
+      loadNews();
+    });
+
+    // Initial load of news
+    loadNews();
+  </script>
+
+
+<script src="../index.js" type="module" defer></script>
+<script src="../global.js" type="module"></script>
+
+
+  </body>
+
+
+
+
+
+
+
+
+</html>
