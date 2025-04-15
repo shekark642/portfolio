@@ -30,7 +30,7 @@ for (let p of pages) {
   let title = p.title;
 
   // Adjust URL if not on the home page and URL is relative
-  url = !ARE_WE_HOME && !url.startsWith('http') ? '../' + url : url;
+  url = !ARE_WE_HOME && !url.startsWith('https') ? '../' + url : url;
 
   // Create the link and add it to <nav>
   // nav.insertAdjacentHTML('beforeend', `<a href="${url}">${title}</a>`);
