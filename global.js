@@ -26,7 +26,8 @@ let nav = document.createElement('nav');
 document.body.prepend(nav);
 
 for (let p of pages) {
-  let url = p.url;
+  let url = location.pathname.startsWith('/portfolio/') ? '/portfolio/' + p.url : p.url;
+
   let title = p.title;
 
   // Adjust URL if not on the home page and URL is relative
