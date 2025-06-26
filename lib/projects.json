@@ -3,7 +3,7 @@
 
     {
         "title": "Analysis of Cardiovascular and Respiratory Health" ,
-        "image": "/images/cardio and resp analysis ss.png",
+        "image": "/images/cardio_and_resp_analysis_ss.png",
         "description": "This was a final project for a data science course, where we had the freedom of choosing whatever dataset we wanted, and create an interactive deployment of some kind of analysis for this dataset. What I chose to do, is create a website that allows users to compare themselves to similar athletes, so they can set a baseline to improve. Website is located <a href='https://shekark642.github.io/final106/' target='_blank'>Here</a> ",
         "year": "2025"
     },
@@ -23,7 +23,7 @@
     },
     {
         "title": "Biomechanics of Tennis Serve Motion with Increased Ball Velocity" ,
-        "image": "/images/biomech ss.png",
+        "image": "/images/biomech_ss.png",
         "description": "Optimized the biomechanics of a tennis serve motion to increase ball velocity and proved this by using mathematical models based on Newtonian physics and statistical data from controlled experiments. You can download the reseach paper <a href='../files/Biomech tennis.csv' download>Here</a>.",
         "year": "2020"
     },
@@ -48,7 +48,7 @@
 
     {
         "title": "Bikewatching in Boston" ,
-        "image": "/images/bikewatching project ss.png",
+        "image": "/images/bikewatching_project_ss.png",
         "description": "Here is a project I did for a data science class. I used external and internal resources to create an interactive map that gives analysis on the traffic and flow of bikes. It shows information of bike lanes and bike stations for different times in the Boston area. You can find it <a href='https://shekark642.github.io/BostonBikeTraffic/' target='_blank'>Here</a>",
         "year": "2025"
     }
