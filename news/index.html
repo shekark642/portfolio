@@ -87,6 +87,17 @@
     <div id="news">Loading news...</div>
 
   <script>
+
+
+
+
+
+
+
+
+
+
+
     // Replace with your actual API key
     const apiKey = '890434a0b66748c9b504cc28df6511ff';
     let currentCategory = '';
@@ -95,10 +106,14 @@
     // Function to load news based on filters and sort option
     function loadNews() {
       // Use the top-headlines endpoint, filtered for the United States
-      let url = `https://newsapi.org/v2/top-headlines?country=us&apiKey=${apiKey}`;
+
+      let baseUrl = `https://newsapi.org/v2/top-headlines?country=us`;
       if (currentCategory) {
-        url += `&category=${currentCategory}`;
+        baseUrl += `&category=${currentCategory}`;
       }
+      const url = `https://corsproxy.io/?${encodeURIComponent(baseUrl + `&apiKey=${apiKey}`)}`;
+
+      
       
       fetch(url)
         .then(response => response.json())
@@ -116,6 +131,21 @@
           console.error('Error fetching news:', error);
         });
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     // Function to display news articles on the page
     function displayNews(articles) {

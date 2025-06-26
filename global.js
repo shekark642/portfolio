@@ -25,28 +25,33 @@ const ARE_WE_HOME = document.documentElement.classList.contains('home');
 let nav = document.createElement('nav');
 document.body.prepend(nav);
 
-const BASE_PATH = '/portfolio/';
-
 for (let p of pages) {
-  let url = p.url.startsWith('http') ? p.url : BASE_PATH + p.url;
+  let url = location.pathname.startsWith('/portfolio/') ? '/portfolio/' + p.url : p.url;
+  
+
   let title = p.title;
 
+  // Adjust URL if not on the home page and URL is relative
+  url = !ARE_WE_HOME && !url.startsWith('http') ? '../' + url : url;
+
+  // Create the link and add it to <nav>
+  // nav.insertAdjacentHTML('beforeend', `<a href="${url}">${title}</a>`);
   let a = document.createElement('a');
   a.href = url;
   a.textContent = title;
 
   a.classList.toggle(
-    'current',
-    a.host === location.host && a.pathname === location.pathname
+  'current',
+  a.host === location.host && a.pathname === location.pathname
   );
 
   if (a.host !== location.host) {
-    a.target = '_blank';
+  a.target = '_blank';
   }
 
   nav.append(a);
-}
 
+}
 
 let navLinks = Array.from(nav.querySelectorAll("a"));
 let currentLink = navLinks.find(
